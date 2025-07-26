@@ -7,6 +7,7 @@ import HomeScreen from "./pages/HomeScreen";
 import AddPassScreen from "./pages/AddPassScreen";
 import PassDetailsScreen from "./pages/PassDetailsScreen";
 import AiAssistantScreen from "./pages/AiAssistantScreen";
+import LoginScreen from "./pages/LoginScreen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/add-pass" element={<AddPassScreen />} />
           <Route path="/pass/:id" element={<PassDetailsScreen />} />
           <Route path="/ai-assistant" element={<AiAssistantScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
