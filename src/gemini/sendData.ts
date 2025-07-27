@@ -31,7 +31,7 @@ export const analyzeReceipt = async (imageFile, apiKey) => {
   const prompt = `
     Analyze this receipt and return a JSON object with this exact structure:
     {
-      "passType": "receipt", "merchantName": "String", "date": "YYYY-MM-DD",
+      "passType": "String", "merchantName": "String", "date": "YYYY-MM-DD",
       "totalAmount": Number, "category": "String (optional)", "taxAmount": Number (optional),
       "priority": Boolean (optional), "isAWarrantyCard": Boolean (optional),
       "items": [ { "itemName": "String", "itemPrice": Number, "quantity": Number } ]
@@ -40,6 +40,9 @@ export const analyzeReceipt = async (imageFile, apiKey) => {
     - Always include passType as "receipt".
     - If a value is missing, use a reasonable default (null, 0, false).
     - Do NOT include any text outside the JSON object.
+    - If the input media has data related to reciept, passType is receipt.
+    - If the input media has data related to warranty, passType is warranty.
+    - If the input media has data related to ticket, passType is pass.
   `;
 
   const requestBody = {
@@ -74,7 +77,7 @@ export const analyzeReceipt = async (imageFile, apiKey) => {
 
     // Validate and fill missing fields
     const finalData = {
-      passType: "receipt",
+      passType: structuredOutput.passType || "receipt",
       merchantName: structuredOutput.merchantName || "Unknown Merchant",
       date: structuredOutput.date || new Date().toISOString().split("T")[0],
       totalAmount: structuredOutput.totalAmount || 0,

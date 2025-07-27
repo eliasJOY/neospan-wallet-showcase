@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { analyzeReceipt } from '../gemini/sendData'; // Import the function to analyze receipts
 import PassDetailsModal from '../components/PassDetailsModal'; // Import your modal component
+import insertData from '@/firebase/store';
 
 // A simple spinner component
 const Spinner = () => (
@@ -80,9 +81,14 @@ const GeminiPassLoader = () => {
           }}
           onSave={(editedData) => {
             console.log("Saving edited pass data:", editedData);
+            insertData("passes", editedData).then((value)=>{
+              console.log("Document written with ID: ", value);
+              navigate('/home'); // Navigate home after saving
+            }).catch((err)=>{
+              console.log(err);
+            }) // Save the pass data to Firestore
             // Add your logic to save the pass to your backend/state
             setIsModalOpen(false);
-            navigate('/home'); // Navigate home after saving
           }}
         />
       )}

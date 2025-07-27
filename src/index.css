@@ -45,7 +45,7 @@
     --chart-info: 217 91% 60%;
     --chart-success: 142 76% 36%;
     --chart-muted: 215.4 16.3% 46.9%;
-    
+
     --radius: 1rem;
 
     /* NeoSpan specific colors (available in both modes) */
@@ -55,10 +55,26 @@
     --neo-blue: 213 95% 64%;
 
     /* Gradients */
-    --gradient-purple: linear-gradient(135deg, hsl(270 91% 65%) 0%, hsl(280 89% 60%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(38 92% 50%) 100%);
-    --gradient-blue: linear-gradient(135deg, hsl(213 95% 64%) 0%, hsl(223 87% 60%) 100%);
-    --gradient-green: linear-gradient(135deg, hsl(142 72% 29%) 0%, hsl(152 68% 35%) 100%);
+    --gradient-purple: linear-gradient(
+      135deg,
+      hsl(270 91% 65%) 0%,
+      hsl(280 89% 60%) 100%
+    );
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43 96% 56%) 0%,
+      hsl(38 92% 50%) 100%
+    );
+    --gradient-blue: linear-gradient(
+      135deg,
+      hsl(213 95% 64%) 0%,
+      hsl(223 87% 60%) 100%
+    );
+    --gradient-green: linear-gradient(
+      135deg,
+      hsl(142 72% 29%) 0%,
+      hsl(152 68% 35%) 100%
+    );
 
     /* Shadows */
     --shadow-card: 0 4px 12px -4px hsl(240 10% 4% / 0.1);
@@ -67,7 +83,7 @@
 
   /* Dark Mode */
   .dark {
-    --background: 240 10% 4%; 
+    --background: 240 10% 4%;
     --foreground: 210 40% 98%;
 
     --card: 240 8% 8%;
@@ -94,7 +110,7 @@
     --border: 240 6% 20%;
     --input: 240 6% 20%;
     --ring: 213 95% 64%;
-    
+
     /* Surface elevations for dark mode */
     --surface-1: 240 8% 8%;
     --surface-2: 240 7% 12%;
@@ -113,10 +129,16 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "MyCustomFont","Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+    
   }
 }
-
+@font-face {
+      font-family: "MyCustomFont";
+      src: url("./fonts/ProductSans-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -125,11 +147,11 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   .animate-fade-in {
     animation: fadeIn 0.3s ease-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;

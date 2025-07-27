@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDCVPWjqsYJZF2JzxXoWYxsuxV2_TZFX0k",
-  authDomain: "raseedh-b9517.firebaseapp.com",
-  projectId: "raseedh-b9517",
-  storageBucket: "raseedh-b9517.firebasestorage.app",
-  messagingSenderId: "705123619317",
-  appId: "1:705123619317:web:f888b864e4cfeab2c190bc"
+  apiKey: "AIzaSyADckGmaoVXQp_ei2pBzcGz61Ew-fmIKx8",
+  authDomain: "neospan-71db0.firebaseapp.com",
+  projectId: "neospan-71db0",
+  storageBucket: "neospan-71db0.firebasestorage.app",
+  messagingSenderId: "810088600023",
+  appId: "1:810088600023:web:e8b6169becd96f96b57b92"
 };
 
 // Initialize Firebase
