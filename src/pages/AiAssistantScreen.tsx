@@ -49,7 +49,7 @@ const AiAssistantScreen = () => {
         <Button 
           variant="ghost" 
           size="sm" 
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/home')}
           className="mr-4 p-0"
         >
           <ArrowLeft className="w-6 h-6" />

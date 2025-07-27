@@ -8,6 +8,13 @@ const AddPassScreen = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
+  const handleSubmit = () => {
+    if (selectedCategory==="media") {
+      // Navigate to the appropriate screen based on the selected category
+      navigate('/capture-media');
+    }
+  }
+
   const categories = [
     { 
       id: "loyalty", 
@@ -38,10 +45,10 @@ const AddPassScreen = () => {
       gradient: "bg-gradient-blue"
     },
     { 
-      id: "photo", 
-      title: "Photo", 
+      id: "media", 
+      title: "Media", 
       icon: Camera, 
-      description: "Upload QR code or barcode",
+      description: "Upload photo, video or audio file",
       gradient: "bg-gradient-purple"
     },
   ];
@@ -104,7 +111,7 @@ const AddPassScreen = () => {
         <Button 
           className="w-full h-12 text-lg font-semibold"
           disabled={!selectedCategory}
-          onClick={() => navigate('/pass/new')}
+          onClick={handleSubmit}
         >
           Continue
         </Button>

@@ -27,7 +27,7 @@ const PassDetailsScreen = () => {
         <Button 
           variant="ghost" 
           size="sm" 
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="mr-4 p-0"
         >
           <ArrowLeft className="w-6 h-6" />
