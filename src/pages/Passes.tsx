@@ -1,15 +1,41 @@
 import BottomNavBar from "@/components/ui/bottom-navbr";
 import { Card } from "@/components/ui/card";
+import { getAllReciepts } from "@/firebase/store";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Passes = () => {
     const navigate = useNavigate();
-    const walletCards = [
-    { id: 1, type: "Movie Ticket", merchant: "PVR Cinemas", gradient: "bg-gradient-purple", amount: "₹350" },
-    { id: 2, type: "Food Voucher", merchant: "Zomato Gold", gradient: "bg-gradient-gold", amount: "₹500" },
-    { id: 3, type: "Receipt Pass", merchant: "Amazon", gradient: "bg-gradient-blue", amount: "₹1,299" },
-    { id: 4, type: "Receipt Pass", merchant: "Amazon", gradient: "bg-gradient-blue", amount: "₹1,299" },
-  ];
+    const [walletCards, setWalletCards] = useState([]);
+    
+    useEffect(() => {
+      const gradients = [
+        "bg-gradient-to-r from-purple-500 to-pink-500",
+        "bg-gradient-to-r from-green-400 to-blue-500",
+        "bg-gradient-to-r from-yellow-400 to-red-500",
+        "bg-gradient-to-r from-indigo-500 to-purple-500",
+        "bg-gradient-to-r from-teal-400 to-cyan-500",
+        "bg-gradient-to-r from-rose-400 to-fuchsia-500",
+        "bg-gradient-to-r from-orange-400 to-amber-500",
+      ];
+    
+      const getRandomGradient = () =>
+        gradients[Math.floor(Math.random() * gradients.length)];
+    
+      const fetchWalletCards = async () => {
+        const receipts = await getAllReciepts();
+        const cards = receipts.map(receipt => ({
+          id: receipt.id,
+          type: receipt.passType || "Receipt",
+          merchant: receipt.merchantName || "Unknown Merchant",
+          gradient: getRandomGradient(),
+          amount: `₹${Number(receipt.totalAmount).toFixed(2)}`
+        }));
+        setWalletCards(cards);
+      };
+    
+      fetchWalletCards();
+    }, []);
   return (
     <div className="mb-6 p-4">
           <h2 className="text-lg font-semibold mb-3 text-muted-foreground fixed">Your Wallet</h2>

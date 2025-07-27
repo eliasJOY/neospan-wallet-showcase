@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, Timestamp, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, Timestamp, serverTimestamp, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import app from "@/firebase/init";
 
@@ -43,5 +43,25 @@ const insertData = async (collectionName, data) => {
     console.error("Error writing document:", error);
   }
 };
+
+export const getAllReciepts = async () => {
+    try {
+        const user = auth.currentUser;
+        if (!user) {
+        throw new Error("User not authenticated");
+        }
+    
+        const querySnapshot = await getDocs(collection(db, "passes"));
+        const receipts = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        }));
+    
+        return receipts.filter(receipt => receipt.userId === user.uid);
+    } catch (error) {
+        console.error("Error fetching receipts:", error);
+        return [];
+    }
+}
 
 export default insertData;
