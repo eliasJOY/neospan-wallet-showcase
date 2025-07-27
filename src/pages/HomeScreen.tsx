@@ -31,7 +31,7 @@ const HomeScreen = () => {
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Header */}
       <header className="flex items-center justify-between p-6 border-b border-border">
-        <h1 className="text-2xl font-bold">NeoSpan Wallet</h1>
+        <h1 className="text-2xl font-bold">Wallet</h1>
         <div className="w-8 h-8 rounded-full bg-surface-2 flex items-center justify-center">
           <User className="w-4 h-4" />
         </div>
